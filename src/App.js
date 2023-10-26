@@ -12,31 +12,31 @@ function App() {
     {
       id: uuidv4(),
       name: "Kenya",
-      population: "100",
+      population: "53,010,000",
       capital: "Nairobi",
     },
     {
       id: uuidv4(),
       name: 'Ethiopia',
-      population: "100",
+      population: "140,000,000",
       capital: "Addis Ababa",
     },
     {
       id: uuidv4(),
       name: "Eritrea",
-      population: "100",
+      population: "4,000,000",
       capital: "Asmera",
     },
     {
       id: uuidv4(),
       name: "Sudan",
-      population: "100",
+      population: "45,660,000",
       capital: "Kartum",
     },
     {
       id: uuidv4(),
       name: "Northern Ireland",
-      population: "100",
+      population: "1,885,000",
       capital: "Belfast",
     }
   ]
@@ -44,6 +44,7 @@ function App() {
   const [countries, setCountries] = useState(initialCountries)
 
   const handleNewCountry = (newCountry) => {
+    console.log(newCountry);
     const currentCountries = ((countries) => [...countries, newCountry])
     setCountries(currentCountries);
   }

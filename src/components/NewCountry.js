@@ -4,40 +4,37 @@ import { v4 as uuidv4 } from 'uuid';
 const NewCountry = (props) => {
     const {onCreate} = props
 
-    const [name, setName] = useState('');
-    const [capital, setCapital] = useState('');
-    const [population, setPopulation] = useState();
+    const [country, setCountry] = useState({
+        id: uuidv4(),
+        name: '',
+        capital: '',
+        population: '',
+    });
+ 
 
 
-    const handleName = (event) => {
-        setName(event.target.value);
-    }
-    const handleCapital = (event) => {
-        setCapital(event.target.value);
-    }
-    const handlePopulation = (event) => {
-        setPopulation(event.target.value);
+    const handleChange = (event) => {
+        setCountry((preCountry) => {
+            return {...preCountry, [event.target.name]: event.target.value}
+        });
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newCountry = {id: uuidv4(), name, capital, population};
-        onCreate(newCountry);
-        setName('');
-        setCapital('');
-        setPopulation('');
+        console.log(country)
+        onCreate(country);
       }
 
   return (
     <form className='form' onSubmit={handleSubmit}>
         <input type='text' name='name' placeholder='enter your name' 
-        required onChange={handleName}></input>
+        required onChange={handleChange} value={country.name}></input>
 
         <input type='text' name='capital' placeholder='enter capital city' 
-        required onChange={handleCapital}></input>
+        required onChange={handleChange} value={country.capital}></input>
 
         <input type='number' name='population' placeholder='enter population' 
-        required onChange={handlePopulation}></input>
+        required onChange={handleChange} value={country.population}></input>
 
         <button type='submit'>Add Country</button>
     </form>
