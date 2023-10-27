@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
-
-const URL = 'https://jsonplaceholder.typicode.com/todos';
+import {useState, useEffect} from 'react';
 
 const useFetch = (URL) => {
 
-    const [data, setData] = useState('')
+    const [data, setData] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
